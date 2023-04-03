@@ -1,0 +1,21 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+nav{
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100px;
+}
+
+.nav-img{
+  display: flex;
+  margin: auto;
+  margin-left: 0;
+}
+
+.nav-img img{
+  margin: auto;
+}
