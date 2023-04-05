@@ -1,0 +1,9 @@
+.Products-section {
+    display: flex;
+    margin: auto;
+    max-width: 1280px;
+}
+
+.Products-title {
+    margin: 50px auto auto 0;
+}

@@ -1,21 +1,30 @@
-body{
-  margin: 0;
-  padding: 0;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-nav{
-  display: flex;
-  flex-flow: row;
-  width: 100%;
-  height: 100px;
+nav {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 100px;
 }
 
-.nav-img{
-  display: flex;
-  margin: auto;
-  margin-left: 0;
+.nav-brand {
+    display: flex;
+    margin: auto;
+    margin-left: 0;
+    height: 100%;
+    width: 40%;
 }
 
-.nav-img img{
-  margin: auto;
+.nav-brand img {
+    margin: auto;
+    width: 70px;
+    height: 70px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-flow: row;
 }
