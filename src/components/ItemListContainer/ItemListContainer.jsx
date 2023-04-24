@@ -2,21 +2,38 @@ import React from 'react'
 import './ItemListContainer.css'
 import { useEffect, useState } from 'react'
 import { mFetch } from "../../utils/mFetch"
+import { Link, useParams } from "react-router-dom"
 
 const ItemListContainer = ({greeting}) => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(()=>{
-    mFetch()
-    .then( resultado => {
-      setProducts(resultado)
-    })
-    .catch (error => console.log(error))
-    .finally(()=> setIsLoading(false))
-  }, [])
-
+  const { categoria } = useParams()
   
+  useEffect(()=>{
+    if(!categoria){
+
+      mFetch()
+      .then( resultado => {
+        setProducts(resultado)
+      })
+      .catch (error => console.log(error))
+      .finally(()=> setIsLoading(false))
+
+    }else{
+
+      mFetch()
+      .then( resultado => {
+        setProducts(resultado.filter(producto => producto.category === categoria))
+      })
+      .catch (error => console.log(error))
+      .finally(()=> setIsLoading(false))
+
+    }
+   
+  }, [categoria])
+  
+
   return (
     <div className='Products-section'>
         <h1 className='Products-title'>{greeting}</h1>
@@ -36,6 +53,10 @@ const ItemListContainer = ({greeting}) => {
                   <label>Precio: {price} U$D</label><br></br>
                   <label>Categoria: {category}</label>
                 </div>
+                <Link to={`/detail/${id}`}>
+                <button>detalle</button>
+                </Link>
+                
               </div>
             )}
         </div>

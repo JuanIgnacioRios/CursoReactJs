@@ -31,6 +31,10 @@ nav {
     font-size: 40px;
 }
 
+.nav-brand-title {
+    text-decoration: none;
+}
+
 .nav-menu {
     display: flex;
     flex-flow: row;
