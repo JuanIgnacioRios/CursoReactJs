@@ -1,5 +1,6 @@
 import React from 'react'
 import './ItemListContainer.css'
+import HomeCover  from '../HomeCover/HomeCover'
 import { useEffect, useState } from 'react'
 import { mFetch } from "../../utils/mFetch"
 import { Link, useParams } from "react-router-dom"
@@ -35,6 +36,8 @@ const ItemListContainer = ({greeting}) => {
   
 
   return (
+    <>
+    <HomeCover />
     <div className='Products-section'>
         <h1 className='Products-title'>{greeting}</h1>
         <div className='cards-layout'>
@@ -42,7 +45,7 @@ const ItemListContainer = ({greeting}) => {
           { isLoading ? 
             <h2>Cargando...</h2> 
           :           
-            products.map ( ({id, photo,  name, price, category }) => 
+            products.map ( ({id, photo, stock, name, price, category }) => 
             
               <div key={id} className="card">
                 <div className='card-img-container'> 
@@ -51,16 +54,18 @@ const ItemListContainer = ({greeting}) => {
                 <div className="card-body">
                   <h3>{name}</h3>
                   <label>Precio: {price} U$D</label><br></br>
-                  <label>Categoria: {category}</label>
+                  <label>Categoria: {category}</label><br></br>
+                  <label>Stock: {stock}</label><br></br>
                 </div>
                 <Link to={`/detail/${id}`}>
-                <button>detalle</button>
+                  <button className='detalle'>Ver Más</button>
                 </Link>
                 
               </div>
             )}
         </div>
     </div>
+    </>
   )
 }
 
