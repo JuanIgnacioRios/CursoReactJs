@@ -8,8 +8,9 @@ export const CartContextProvider = ({children})=> {
     const [cartList, setCartList] = useState([])
 
     const addToCart = (newProduct)=>{
-
-        const idx = cartList.findIndex(prod => newProduct[0].id === prod[0].id)
+        console.log(cartList)
+        console.log(newProduct)
+        const idx = cartList.findIndex(prod => newProduct.id === prod.id)
         
         if(idx === -1){
             setCartList([...cartList, newProduct])
@@ -33,7 +34,7 @@ export const CartContextProvider = ({children})=> {
     const totalAPagar = () => {
         let montoTotal = 0
         for (let index = 0; index < cartList.length; index++) {
-            montoTotal += cartList[index][0].price * cartList[index].cantidad
+            montoTotal += cartList[index].price * cartList[index].cantidad
         }
         return montoTotal
     }

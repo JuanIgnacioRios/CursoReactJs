@@ -5,6 +5,8 @@ import './CartContainer.css'
 export const CartContainer = () => {
     const {cartList,  vaciarCarrtio, handleRemoveProduct, totalAPagar } = useCartContext()
 
+    console.log(cartList)
+
     const isCartEmpty = () => {
         return cartList.length === 0;
     };
@@ -21,7 +23,7 @@ export const CartContainer = () => {
                 :
                 <>
                 <div className="buttons-container">
-                    <Link to="/checkout"><button className="cart-button checkout" onClick={vaciarCarrtio}>TerminarCompra</button></Link>
+                    <Link to="/checkout"><button className="cart-button checkout">TerminarCompra</button></Link>
                     <Link to="/"><button className="cart-button continue-shopping-button2" >Seguir Comprando</button></Link>
                     <button className="cart-button" onClick={vaciarCarrtio}>Vaciar Carrito</button>
                     <div className="total-ammount-container">
@@ -30,11 +32,11 @@ export const CartContainer = () => {
                 </div>
                 {cartList.map((product, index) => (
                     <div className="cart-item">
-                        <img src={product[0].photo} alt="imagen" className="cart-item-image"/>
+                        <img src={product.photo} alt="imagen" className="cart-item-image"/>
                         <div className="cart-item-info">
                             <div className="info-container">
-                                <h1>{product[0].name}</h1>
-                                <h3>Precio ${product[0].price}</h3>
+                                <h1>{product.name}</h1>
+                                <h3>Precio ${product.price}</h3>
                                 <h3>Cantidad : {product.cantidad}</h3>
                             </div>
                         </div>

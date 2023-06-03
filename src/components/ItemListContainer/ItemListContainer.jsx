@@ -1,6 +1,7 @@
 import React from 'react'
 import './ItemListContainer.css'
 import HomeCover  from '../HomeCover/HomeCover'
+import { collection, getDocs, getFirestore, where,query } from "firebase/firestore";
 import { useEffect, useState } from 'react'
 import { mFetch } from "../../utils/mFetch"
 import { Link, useParams } from "react-router-dom"
@@ -11,29 +12,56 @@ const ItemListContainer = ({greeting}) => {
 
   const { categoria } = useParams()
   
-  useEffect(()=>{
+  // useEffect(()=>{
+  //   if(!categoria){
+
+  //     mFetch()
+  //     .then( resultado => {
+  //       setProducts(resultado)
+  //     })
+  //     .catch (error => console.log(error))
+  //     .finally(()=> setIsLoading(false))
+
+  //   }else{
+
+  //     mFetch()
+  //     .then( resultado => {
+  //       setProducts(resultado.filter(producto => producto.category === categoria))
+  //     })
+  //     .catch (error => console.log(error))
+  //     .finally(()=> setIsLoading(false))
+
+  //   }
+   
+  // }, [categoria])
+
+  useEffect(() => {
+    const db = getFirestore();
+
     if(!categoria){
 
-      mFetch()
-      .then( resultado => {
-        setProducts(resultado)
+      const queryDoc = collection(db, "items");
+
+      getDocs(queryDoc)
+      .then((items) =>{
+          setProducts(items.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
       })
       .catch (error => console.log(error))
-      .finally(()=> setIsLoading(false))
+      .finally(() => setIsLoading(false))
 
     }else{
 
-      mFetch()
-      .then( resultado => {
-        setProducts(resultado.filter(producto => producto.category === categoria))
+      const queryDoc = query(collection(db, "items"), where("category", "==", categoria ));
+
+      getDocs(queryDoc)
+      .then((items) =>{
+          setProducts(items.docs.map((doc) => ({ id: doc.id, ...doc.data()})))
       })
       .catch (error => console.log(error))
-      .finally(()=> setIsLoading(false))
-
+      .finally(() => setIsLoading(false))
+      
     }
-   
-  }, [categoria])
-  
+  }, [categoria]);
 
   return (
     <>

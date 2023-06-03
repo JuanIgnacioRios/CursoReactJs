@@ -20,7 +20,7 @@ function App() {
           <Route path='/detail/:pid' element={<ItemDetailContainer />} />
           <Route path='/cart' element={<CartContainer />} /> 
           <Route path='/checkout' element={<CheckOut />} /> 
-        </Routes>      
+        </Routes>  
       </Router>
     </CartContextProvider>
   )

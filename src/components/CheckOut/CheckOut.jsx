@@ -1,10 +1,31 @@
 import React from 'react';
 import { useState } from "react";
 import './Checkout.css';
+import { useCartContext } from "../../context/CartContext"
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 export const CheckOut = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', address: '' });
   const [errors, setErrors] = useState({});
+
+  const {cartList, totalAPagar } = useCartContext()
+
+    console.log(cartList)
+
+  const sendOrder = () => {
+    const order = {
+      buyer: {name: formData.name, phone: formData.phone, email: formData.email, address: formData.address},
+      items: cartList.map(({name, id, price, cantidad})=>({name, id, price, cantidad})),
+      total: totalAPagar()
+    };
+    const db = getFirestore();
+
+    const ordersCollection = collection(db, "orders")
+
+    addDoc(ordersCollection, order)
+    .then(({ id }) => alert('Gracias ' + formData.name + ' Su Orden de compra ha sido confirmada\nSu codigo es: '+ id))
+  }
+
 
   const validateForm = () => {
     let newErrors = {};
@@ -50,7 +71,7 @@ export const CheckOut = () => {
   const HandleOnSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert('Gracias ' + formData.name + ' Su Orden de compra ha sido confirmada!');
+      sendOrder();
     }
   };
 
