@@ -9,13 +9,13 @@ Este es un proyecto de e-commerce desarrollado en React como parte del curso de 
 4. Proceso de compra: Los usuarios pueden completar el proceso de compra proporcionando su información personal, como nombre, dirección y detalles de contacto.
 5. Integración con Firebase: El proyecto utiliza Firebase para el almacenamiento de datos y la autenticación de usuarios.
 
-#Tecnologías utilizadas
+# Tecnologías utilizadas
 1. React: Biblioteca de JavaScript para construir interfaces de usuario interactivas.
 2. React Router: Librería para manejar la navegación en una aplicación de React.
 3. Firebase: Plataforma de desarrollo de aplicaciones web que proporciona servicios de backend, como almacenamiento en la nube y autenticación de usuarios.
 4. HTML y CSS: Lenguajes estándar para la estructura y el estilo de la aplicación.
 
-#Instalación y configuración
+# Instalación y configuración
 Clona este repositorio en tu máquina local.
 Abre una terminal y navega hasta el directorio del proyecto.
 Ejecuta el siguiente comando para instalar las dependencias del proyecto:
@@ -26,7 +26,7 @@ Ejecuta el siguiente comando para iniciar la aplicación:
 npm run dev
 Abre tu navegador web e ingresa a http://localhost:5173 para ver la aplicación en funcionamiento.
 
-#Contribución
+# Contribución
 Las contribuciones son bienvenidas. Si tienes sugerencias, mejoras o encuentras algún error, no dudes en abrir un problema o enviar una solicitud de extracción.
 
 #Autor
