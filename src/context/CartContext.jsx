@@ -38,13 +38,19 @@ export const CartContextProvider = ({children})=> {
         return montoTotal
     }
 
+    const productosTotales = () => {
+        let totalProducts = cartList.length
+        return totalProducts
+    }
+
     return (
        <CartContext.Provider value={{
             cartList,
             addToCart,
             handleRemoveProduct,
             vaciarCarrtio,
-            totalAPagar 
+            totalAPagar,
+            productosTotales 
        }}>
             {children}
        </CartContext.Provider>
